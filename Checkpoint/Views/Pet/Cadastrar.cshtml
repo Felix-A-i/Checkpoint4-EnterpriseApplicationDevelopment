@@ -1,0 +1,40 @@
+﻿@model Pet
+
+@{
+    ViewData["Title"] = "Cadastrar";
+}
+<h1>Cadastrar</h1>
+
+<form asp-action="cadastrar">
+    <div class="form-group">
+        <label asp-for="Nome"></label>
+        <input asp-for="Nome" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Sexo"></label>
+        <select asp-for="Sexo" class="form-control" asp-items="@Html.GetEnumSelectList<Sexo>()">
+            <option>Selecione</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="TipoAnimal"></label>
+        <select asp-for="TipoAnimal" class="form-control" asp-items="@Html.GetEnumSelectList<TipoAnimal>()">
+            <option>Selecione</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Raca"></label>
+        <select asp-for="Raca" class="form-control" asp-items="@ViewBag.gatos">
+            <option>Selecione</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Idade"></label>
+        <input asp-for="Idade" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="DataNascimento"></label>
+        <input asp-for="DataNascimento" class="form-control" />
+    </div>
+    <input type="submit" value="Cadastrar" class="btn btn-success" />
+</form>
