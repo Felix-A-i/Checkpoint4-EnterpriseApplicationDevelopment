@@ -21,9 +21,10 @@ namespace Checkpoint.Controllers
             ViewBag.cachorros = new SelectList(listaCachorros);
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
-            return View();
+            return View(_pets);
         }
 
         [HttpGet]
@@ -31,6 +32,45 @@ namespace Checkpoint.Controllers
         {
             CarregarDados();
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Cadastrar(Pet pet)
+        {
+            pet.Id = ++_index;
+            _pets.Add(pet);
+            TempData["msg"] = "Pet cadastrado!";
+            return RedirectToAction("Cadastrar");
+        }
+
+        [HttpPost]
+        public IActionResult Remover(int id)
+        {
+            _pets.RemoveAll(pet => pet.Id == id);
+            TempData["msg"] = "Pet removido!";
+            return RedirectToAction("index");
+        }
+
+        [HttpGet]
+        public IActionResult Editar(int id)
+        {
+            CarregarDados();
+            var pet = _pets.Find(pet => pet.Id == id);
+            return View(pet);
+        }
+
+        [HttpPost]
+        public IActionResult Editar(Pet pet)
+        {
+            _pets[_pets.FindIndex(obj => obj.Id == pet.Id)] = pet;
+            TempData["msg"] = "Pet atualizado!";
+            return RedirectToAction("index");
+        }
+
+        public IActionResult Filtrar(int idade)
+        {
+            var pet = _pets.Find(pet => pet.Idade == idade);
+            return View(pet);
         }
     }
 }

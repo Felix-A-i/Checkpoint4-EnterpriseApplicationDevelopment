@@ -1,0 +1,13 @@
+﻿@model Pet
+
+@{
+    TempData["Title"] = "Filtrar";
+}
+
+<h1>Filtrado</h1>
+
+<form asp-action="filtrar">
+    <input asp-for="Idade" />
+    <partial name="_Form" />
+    <a asp-action="index" asp-controller="pet" class="btn btn-danger">Cancelar</a>
+</form>

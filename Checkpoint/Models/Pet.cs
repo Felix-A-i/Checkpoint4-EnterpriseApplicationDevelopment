@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,6 +9,7 @@ namespace Checkpoint.Models
 {
     public class Pet
     {
+        [HiddenInput]
         public int Id { get; set; }
         public string Nome { get; set; }
         public Sexo Sexo { get; set; }
