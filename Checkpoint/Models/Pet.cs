@@ -15,8 +15,9 @@ namespace Checkpoint.Models
         public Sexo Sexo { get; set; }
         [Display(Name = "Tipo de animal")]
         public TipoAnimal TipoAnimal { get; set; }
+        [Display(Name = "Raça")]
         public string Raca { get; set; }
-        public int Idade { get; set; }
+        public bool Castrado { get; set; }
         [Display(Name= "Data de Nascimento"), DataType(DataType.Date)]
         public DateTime DataNascimento { get; set; }
     }

@@ -1,0 +1,21 @@
+﻿@model List<Integrantes>
+@{ViewData["Title"] = "Integrantes";}
+
+<h1>Integrantes</h1>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">RM</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var integrante in Model)
+        {
+            <tr>
+                <th scope="row">@integrante.Nome</th>
+                <th scope="row">@integrante.Rm</th>
+            </tr>
+        }
+    </tbody>
+</table>

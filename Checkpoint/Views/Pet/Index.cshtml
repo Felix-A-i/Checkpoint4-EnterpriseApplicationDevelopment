@@ -1,10 +1,17 @@
 ﻿@model List<Pet>
 
 @{
-    ViewData["msg"] = "Pets cadastrados";
+    ViewData["Title"] = "Pets cadastrados";
 }
 
 <h1>Pets cadastrados</h1>
+
+<div class="input-group mb-3">
+    <input type="text" class="form-control" placeholder="Search">
+    <div class="input-group-append">
+        <a asp-action="filtrar" class="btn btn-success">Filtrar</a>
+    </div>
+</div>
 
 <mensagem texto="@TempData["msg"]"></mensagem>
 
@@ -15,16 +22,10 @@
             <th scope="col">Nome</th>
             <th scope="col">Sexo</th>
             <th scope="col">Tipo de animal</th>
-            <th scope="col">Tipo de raça</th>
-            <th scope="col">Idade</th>
+            <th scope="col">Raça</th>
+            <th scope="col">Castrado</th>
             <th scope="col">Data de nascimento</th>
-            @foreach(var item in Model)
-            {
-                <th>
-                    <input type="search"/>
-                    <a asp-action="filtrar" asp-route-idade="@item.Idade" class="btn btn-dark btn-sm">Filtrar</a>
-                </th>
-            }
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -36,8 +37,8 @@
                 <th scope="row">@item.Sexo</th>
                 <th scope="row">@item.TipoAnimal</th>
                 <th scope="row">@item.Raca</th>
-                <th scope="row">@item.Idade</th>
-                <th scope="row">@item.DataNascimento</th>
+                <th scope="row">@(item.Castrado?"Sim":"Não")</th>
+                <th scope="row">@item.DataNascimento.ToShortDateString()</th>
                 <th>
                     <a asp-action="editar" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Editar</a>
                     <button onClick="idPet.value = @item.Id" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal">
@@ -49,7 +50,7 @@
     </tbody>
 </table>
 
-<a asp-action="cadastrar" class="btn btn-outline-secondary">Cadastrar</a>
+<a asp-action="cadastrar" class="btn btn-success btn-lg">Cadastrar</a>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -67,8 +68,8 @@
             <div class="modal-footer">
                 <form asp-action="remover">
                     <input type="hidden" name="id" id="idPet" />
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
                     <button type="submit" class="btn btn-danger">Sim</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Não</button>
                 </form>
             </div>
         </div>

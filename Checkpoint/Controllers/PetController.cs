@@ -67,9 +67,10 @@ namespace Checkpoint.Controllers
             return RedirectToAction("index");
         }
 
-        public IActionResult Filtrar(int idade)
+        [HttpPost]
+        public IActionResult Filtrar(Sexo sexo)
         {
-            var pet = _pets.Find(pet => pet.Idade == idade);
+            var pet = _pets.Find(pet => pet.Sexo == sexo);
             return View(pet);
         }
     }

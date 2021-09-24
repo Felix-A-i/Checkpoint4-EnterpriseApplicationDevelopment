@@ -15,7 +15,7 @@ namespace Checkpoint.TagHelpers
             output.TagName = "input";
             output.Attributes.SetAttribute("type", "submit");
             output.Attributes.SetAttribute("value", string.IsNullOrEmpty(Texto) ? "Cadastrar" : Texto);
-            output.Attributes.SetAttribute("class", string.IsNullOrEmpty(Class) ? "btn btn-primary" : Class);
+            output.Attributes.SetAttribute("class", string.IsNullOrEmpty(Class) ? "btn btn-success" : Class);
         }
     }
 }
