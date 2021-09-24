@@ -1,19 +1,4 @@
-﻿@model List<Pet>
-
-@{
-    ViewData["Title"] = "Pets cadastrados";
-}
-
-<h1>Pets cadastrados</h1>
-
-<div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="Search">
-    <div class="input-group-append">
-        <a asp-action="filtrar" class="btn btn-success">Filtrar</a>
-    </div>
-</div>
-
-<mensagem texto="@TempData["msg"]"></mensagem>
+﻿@model List<Gato>
 
 <table class="table table-hover">
     <thead>
@@ -21,7 +6,7 @@
             <th scope="col">Id</th>
             <th scope="col">Nome</th>
             <th scope="col">Sexo</th>
-            <th scope="col">Tipo de animal</th>
+            <th scope="col">Cor</th>
             <th scope="col">Raça</th>
             <th scope="col">Castrado</th>
             <th scope="col">Data de nascimento</th>
@@ -35,13 +20,13 @@
                 <th scope="row">@item.Id</th>
                 <th scope="row">@item.Nome</th>
                 <th scope="row">@item.Sexo</th>
-                <th scope="row">@item.TipoAnimal</th>
+                <th scope="row">@item.Cor</th>
                 <th scope="row">@item.Raca</th>
                 <th scope="row">@(item.Castrado?"Sim":"Não")</th>
                 <th scope="row">@item.DataNascimento.ToShortDateString()</th>
                 <th>
                     <a asp-action="editar" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Editar</a>
-                    <button onClick="idPet.value = @item.Id" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal">
+                    <button onClick="idGato.value = @item.Id" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal">
                         Remover
                     </button>
                 </th>
@@ -63,11 +48,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                Tem certeza que quer remover o pet?
+                Tem certeza que quer remover o gato?
             </div>
             <div class="modal-footer">
                 <form asp-action="remover">
-                    <input type="hidden" name="id" id="idPet" />
+                    <input type="hidden" name="id" id="idGato" />
                     <button type="submit" class="btn btn-danger">Sim</button>
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Não</button>
                 </form>

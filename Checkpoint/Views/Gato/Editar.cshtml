@@ -1,0 +1,14 @@
+﻿@model Gato
+
+@{ 
+    TempData["Title"] = "Editar";
+}
+
+<h1>Editar <i class="fas fa-cat"></i></h1>
+
+<form asp-action="editar">
+    <input asp-for="Id"/>
+    <partial name="_Form" />
+    <botao texto="Editar"></botao>
+    <a asp-action="index" asp-controller="gato" class="btn btn-danger">Cancelar</a>
+</form>

@@ -1,4 +1,4 @@
-﻿@model Pet
+﻿@model Gato
 
 <div class="form-group">
     <label asp-for="Nome"></label>
@@ -13,15 +13,13 @@
 </div>
 <h1></h1>
 <div class="form-group">
-    <label asp-for="TipoAnimal"></label>
-    <select asp-for="TipoAnimal" class="form-control" asp-items="@Html.GetEnumSelectList<TipoAnimal>()">
-        <option>Selecione</option>
-    </select>
+    <label asp-for="Cor"></label>
+    <input asp-for="Cor" class="form-control"/>
 </div>
 <h1></h1>
 <div class="form-group">
     <label asp-for="Raca"></label>
-    <select asp-for="Raca" class="form-control" asp-items="@ViewBag.gatos">
+    <select asp-for="Raca" class="form-control" asp-items="@ViewBag.racas">
         <option>Selecione</option>
     </select>
 </div>

@@ -1,15 +1,15 @@
-﻿@model Pet
+﻿@model Gato
 
 @{
     ViewData["Title"] = "Cadastrar";
 }
 
-<h1>Cadastrar</h1>
+<h1>Cadastrar <i class="fas fa-cat"></i></h1>
 
 <mensagem texto="@TempData["msg"]"></mensagem>
 
 <form asp-action="cadastrar">
     <partial name="_Form" />
-    <cadastrar></cadastrar>
+    <botao></botao>
     <a asp-action="index" class="btn btn-info">Listar</a>
 </form>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Checkpoint.TagHelpers
 {
-    public class CadastrarTagHelper : TagHelper
+    public class BotaoTagHelper : TagHelper
     {
         public string Texto { get; set; }
         public string Class { get; set; }
