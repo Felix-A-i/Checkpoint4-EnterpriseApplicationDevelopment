@@ -1,0 +1,14 @@
+﻿@model Cachorro
+
+@{
+    TempData["Title"] = "Editar";
+}
+
+<h1>Editar <i class="fas fa-dog"></i></h1>
+<mensagem texto="@TempData["msg"]"></mensagem>
+<form asp-action="editar">
+    <input asp-for="CachorroId" />
+    <partial name="_Form" />
+    <botao texto="Editar"></botao>
+    <a asp-action="index" asp-controller="cachorro" class="btn btn-danger">Cancelar</a>
+</form>

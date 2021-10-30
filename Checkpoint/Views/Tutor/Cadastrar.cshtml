@@ -1,0 +1,9 @@
+﻿@{ ViewData["Title"] = "Cadastrar";}  
+
+<h1>Cadastrar tutor</h1>
+<mensagem texto="@TempData["msg"]"></mensagem>
+<form asp-action="Cadastrar">
+    <partial name="_Form"/>
+    <botao></botao>
+    <a asp-action="Index" class="btn btn-secondary">Listar</a>
+</form>

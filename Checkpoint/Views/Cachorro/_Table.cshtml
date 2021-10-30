@@ -1,4 +1,4 @@
-﻿@model List<Gato>
+﻿@model List<Cachorro>
 
 <table class="table table-hover">
     <thead>
@@ -18,17 +18,17 @@
         @foreach (var item in Model)
         {
             <tr>
-                <th scope="row">@item.GatoId</th>
+                <th scope="row">@item.CachorroId</th>
                 <th scope="row">@item.Nome</th>
                 <th scope="row">@item.Sexo</th>
                 <th scope="row">@item.Cor</th>
                 <th scope="row">@item.Raca</th>
                 <th scope="row">@(item.Castrado?"Sim":"Não")</th>
                 <th scope="row">@item.DataNascimento.ToShortDateString()</th>
-                <th scope="row">@item.Tutor?.Nome</th>
+                <th scope="row">@item.Tutor.Nome)</th>
                 <th>
-                    <a asp-action="editar" asp-route-id="@item.GatoId" class="btn btn-primary btn-sm">Editar</a>
-                    <button onClick="idGato.value = @item.GatoId" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal">
+                    <a asp-action="editar" asp-route-id="@item.CachorroId" class="btn btn-primary btn-sm">Editar</a>
+                    <button onClick="idCachorro.value = @item.CachorroId" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal">
                         Remover
                     </button>
                 </th>
@@ -50,11 +50,11 @@
                 </button>
             </div>
             <div class="modal-body">
-                Tem certeza que quer remover o gato?
+                Tem certeza que quer remover o cachorro?
             </div>
             <div class="modal-footer">
                 <form asp-action="remover">
-                    <input type="hidden" name="id" id="idGato" />
+                    <input type="hidden" name="id" id="idCachorro" />
                     <button type="submit" class="btn btn-danger">Sim</button>
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Não</button>
                 </form>

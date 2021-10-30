@@ -10,10 +10,10 @@ using System.Threading.Tasks;
 
 namespace Checkpoint.Controllers
 {
-    public class GatoController : Controller
+    public class CachorroController : Controller
     {
         private PetShopContext _context;
-        public GatoController(PetShopContext context)
+        public CachorroController(PetShopContext context)
         {
             _context = context;
         }
@@ -26,16 +26,16 @@ namespace Checkpoint.Controllers
 
         private void CarregarDados()
         {
-            var listaRacas = new List<string>(new string[] { "Siamês", "SRD", "Persa", "Sphynx", "American Shorthair"});
+            var listaRacas = new List<string>(new string[] { "São Bernardo", "SRD", "Samoieda", "Bulldog", "Labrador"});
             ViewBag.racas = new SelectList(listaRacas);
         }
 
         [HttpGet]
         public IActionResult Index(string nomeBusca, Sexo? sexoBusca)
         {
-            var lista = _context.Gatos.Where(g =>
-            (g.Nome.Contains(nomeBusca) || (nomeBusca == null) &&
-            (g.Sexo.Equals(sexoBusca) || sexoBusca == null))).Include(g => g.Tutor).ToList();
+            var lista = _context.Cachorros.Where(c =>
+            (c.Nome.Contains(nomeBusca) || (nomeBusca == null) &&
+            (c.Sexo.Equals(sexoBusca) || sexoBusca == null))).Include(c => c.Tutor).ToList();
             return View(lista);
         }
 
@@ -48,46 +48,45 @@ namespace Checkpoint.Controllers
         }
 
         [HttpPost]
-        public IActionResult Cadastrar(Gato gato)
+        public IActionResult Cadastrar(Cachorro cachorro)
         {
-            _context.Gatos.Add(gato);
+            _context.Cachorros.Add(cachorro);
             _context.SaveChanges();
-            TempData["msg"] = $"{gato.Nome} cadastrado!";
+            TempData["msg"] = $"{cachorro.Nome} cadastrado!";
             return RedirectToAction("Index");
         }
 
         [HttpPost]
         public IActionResult Remover(int id)
         {
-            var gato = _context.Gatos.Find(id);
-            _context.Gatos.Remove(gato);
+            var cachorro = _context.Cachorros.Find(id);
+            _context.Cachorros.Remove(cachorro);
             _context.SaveChanges();
-            TempData["msg"] = $"Gato {gato} removido!";
+            TempData["msg"] = $"Cachorro {cachorro} removido!";
             return RedirectToAction("Index");
         }
 
-        [HttpGet]
         public IActionResult Editar(int id)
         {
             CarregarDados();
-            var gato = _context.Gatos.Find(id);
-            return View(gato);
+            var cachorro = _context.Cachorros.Find(id);
+            return View(cachorro);
         }
 
         [HttpPost]
-        public IActionResult Editar(Gato gato)
+        public IActionResult Editar(Cachorro cachorro)
         {
-            _context.Gatos.Update(gato);
+            _context.Cachorros.Update(cachorro);
             _context.SaveChanges();
-            TempData["msg"] = $"{gato.Nome} atualizado!";
+            TempData["msg"] = $"{cachorro.Nome} atualizado!";
             return RedirectToAction("Index");
         }
 
         [HttpGet]
         public IActionResult Detalhar(int id)
         {
-            var gato = _context.Gatos.Include(g => g.Tutor).Where(g => g.GatoId == id).FirstOrDefault();
-            return View(gato);
+            var cachorro = _context.Cachorros.Include(c => c.Tutor).Where(c => c.CachorroId == id).FirstOrDefault();
+            return View(cachorro);
         }
     }
 }

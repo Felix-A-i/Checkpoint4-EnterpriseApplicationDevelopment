@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace Checkpoint.Models
 {
-    [Table("Tbl_Gato")]
-    public class Gato
+    [Table("Tbl_Cachorro")]
+    public class Cachorro
     {
         [Column("Id"), HiddenInput]
-        public int GatoId { get; set; }
+        public int CachorroId { get; set; }
         [Required, MaxLength(100)]
         public string Nome { get; set; }
         public Sexo? Sexo { get; set; }

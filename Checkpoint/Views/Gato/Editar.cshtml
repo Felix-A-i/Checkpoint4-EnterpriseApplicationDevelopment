@@ -5,9 +5,9 @@
 }
 
 <h1>Editar <i class="fas fa-cat"></i></h1>
-
+<mensagem texto="@TempData["msg"]"></mensagem>
 <form asp-action="editar">
-    <input asp-for="Id"/>
+    <input asp-for="GatoId"/>
     <partial name="_Form" />
     <botao texto="Editar"></botao>
     <a asp-action="index" asp-controller="gato" class="btn btn-danger">Cancelar</a>

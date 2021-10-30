@@ -1,0 +1,63 @@
+﻿@{ ViewData["Title"] = "Index";}
+@model List<Tutor>
+
+<h1>Lista de Tutores</h1>
+<mensagem texto="@TempData["msg"]"></mensagem>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Gênero</th>
+            <th scope="col">Data de Nascimento</th>
+            <th scope="col">Logradouro</th>
+            <th scope="col">CEP</th>
+            <th scope="col">Cidade</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td scope="row">@item.TutorId</td>
+                <td scope="row">@item.Nome</td>
+                <td scope="row">@item.GeneroTutor</td>
+                <td scope="row">@item.DataNascimento.ToShortDateString()</td>
+                <td scope="row">@item.Endereco.Logradouro</td>
+                <td scope="row">@item.Endereco.Cep</td>
+                <td scope="row">@item.Endereco.Cidade</td>
+                <td scope="row">
+                    <a asp-action="editar" asp-route-id="@item.TutorId" class="btn btn-primary btn-sm">Editar</a>
+                    <button onClick="idTutor.value = @item.TutorId" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal">
+                        Remover
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirmação</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Tem certeza que quer remover o tutor?
+            </div>
+            <div class="modal-footer">
+                <form asp-action="remover">
+                    <input type="hidden" name="id" id="idTutor" />
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Não</button>
+                    <button type="submit" class="btn btn-danger">Sim</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

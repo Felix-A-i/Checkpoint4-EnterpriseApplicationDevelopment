@@ -1,5 +1,7 @@
+using Checkpoint.Persistence;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -23,6 +25,10 @@ namespace Checkpoint
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            //Configurar a injeção de dependência do DbContext, "conexao" -> appsettings.json
+            services.AddDbContext<PetShopContext>(op =>
+               op.UseSqlServer(Configuration.GetConnectionString("conexao")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

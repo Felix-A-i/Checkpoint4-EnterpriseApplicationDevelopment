@@ -1,0 +1,19 @@
+﻿@model Cachorro
+
+@{
+    ViewData["Title"] = "Detalhar";
+}
+
+<h1>@Model.Nome</h1>
+
+<div class="card" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Tutor: @Model.Tutor?.Nome</li>
+        <li class="list-group-item">Sexo: @Model.Sexo</li>
+        <li class="list-group-item">Cor: @Model.Cor</li>
+        <li class="list-group-item">Raça: @Model.Raca</li>
+        <li class="list-group-item">Castrado: @Model.Castrado</li>
+        <li class="list-group-item">Data Nascimento: @Model.DataNascimento.ToShortDateString()</li>
+    </ul>
+</div>
+<br />
